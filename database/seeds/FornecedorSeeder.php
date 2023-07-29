@@ -21,14 +21,14 @@ class FornecedorSeeder extends Seeder
 
         Fornecedor::create([
             'nome' => 'Fornecedor 200',
-            'site' => 'forcedor200.com.br',
+            'site' => 'fornecedor200.com.br',
             'uf' => 'RS',
             'email' => 'contato@fornecedor200.com.br'
         ]);
 
         DB::table('fornecedores')->insert([
             'nome' => 'Fornecedor 300',
-            'site' => 'forcedor300.com.br',
+            'site' => 'fornecedor300.com.br',
             'uf' => 'SP',
             'email' => 'contato@fornecedor300.com.br' 
         ]);
