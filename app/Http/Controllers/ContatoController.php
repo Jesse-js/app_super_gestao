@@ -9,7 +9,8 @@ use App\MotivoContato;
 class ContatoController extends Controller
 {
     //
-    public function contato(Request $request){
+    public function contato(Request $request)
+    {
         /*echo '<pre>';
         print_r($request->all());
         echo '</pre>';
@@ -36,15 +37,27 @@ class ContatoController extends Controller
         return view('site.contato', ['titulo' => 'Contato', 'motivo_contatos' => $motivo_contatos]);
     }
 
-    public function salvar(Request $request) 
+    public function salvar(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|min:3|max:40',
+        $regras = [
+            'nome' => 'required|min:3|max:40|unique:site_contatos',
             'telefone' => 'required',
             'email' => 'email',
             'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000'
-        ]);
+        ];
+        $feedback = [
+            'nome.required' => 'O campo nome precisa ser preenchido',
+            'nome.min' => 'O campo nome precisa de pelo menos caracteres',
+            'nome.max' => 'O campo nome deve ter no máximo 40 caracteres',
+            'nome.unique' => 'O nome informado já está em uso',
+            'telefone.required' => 'O campo telefone precisa ser preenchido',
+            'mensagem.max' => 'A mensagem deve ter no máximo 2000 caracteres',
+            #mensagem default para todos os campos com essa restrição
+            'required' => 'O campo :attribute deve ser preenchido',
+            'email' => 'O email informado não é válido'
+        ];
+        $request->validate($regras, $feedback);
         SiteContato::create($request->all());
         return redirect()->route('site.index');
     }
