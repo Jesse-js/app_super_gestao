@@ -15,13 +15,15 @@ class LogAcessoMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        //return $next($request);
-        
+    {   
         $ip = $request->server->get('REMOTE_ADDR');
         $rota = $request->getRequestUri();
 
         LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);
-        return Response('Chegamos no middleware');
+        $resposta = $next($request);
+
+        $resposta->setStatusCode(201, 'O status da resposta e a mensagem foram modificados' );
+        
+        return $resposta;
     }
 }
