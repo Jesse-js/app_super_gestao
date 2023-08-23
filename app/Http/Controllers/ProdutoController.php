@@ -56,7 +56,7 @@ class ProdutoController extends Controller
             'unidade_id.exists' => 'A unidade de medida infromada não existe'
         ];
         $request->validate($regras, $feedback);
-        
+
         Produto::create($request->all());
         return redirect()->route('produto.index');
     }
@@ -69,7 +69,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
