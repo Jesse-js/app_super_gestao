@@ -17,7 +17,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Item::paginate(10);
+        $produtos = Item::with(['itemDetalhe'])->paginate(10);//Eager Loading, por padrão é Lazy Loading
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all() ]);
     }
 
