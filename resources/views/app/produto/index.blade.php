@@ -19,6 +19,7 @@
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Fornecedor</th>
+                            <th>Fornecedor Site</th>
                             <th>Peso</th>
                             <th>Unidade ID</th>
                             <th>Comprimento</th>
