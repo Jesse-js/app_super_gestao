@@ -27,7 +27,6 @@ Route::get('/login/{erro?}', 'LoginController@index')->name('site.login');
 Route::post('/login', 'LoginController@autenticar')->name('site.login');
 
 Route::middleware('autenticacao:ldap,visitante')->prefix('/app')->group(function () {
-    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
     Route::get('/home', 'HomeController@index')->name('app.home');
     Route::get('/sair', 'LoginController@sair')->name('app.sair');
 
@@ -41,6 +40,9 @@ Route::middleware('autenticacao:ldap,visitante')->prefix('/app')->group(function
 
     Route::resource('produto', 'ProdutoController');
     Route::resource('produto-detalhe', 'ProdutoDetalheController');
+    Route::resource('cliente', 'ClienteController');
+    Route::resource('pedido', 'PedidoController');
+    Route::resource('pedido-produto', 'PedidoProdutoController');
 });
 
 
