@@ -1,6 +1,6 @@
 ### Super Management
 -----------------------------------------------
-A simple system for registering customers, suppliers, products an orders.
+A simple system for registering customers, suppliers, products and orders.
 
 ### Requires
 ------------------------------------------------
